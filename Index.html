@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>One Special Question ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#ffd6df,#fff0f4);
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.container{
+    width:92%;
+    max-width:480px;
+    min-height:620px;
+    background:#fff;
+    border-radius:30px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 15px 50px rgba(0,0,0,.15);
+    position:relative;
+    overflow:hidden;
+}
+
+.page{
+    display:none;
+    animation:fade .5s ease;
+}
+
+.page.active{
+    display:block;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =========================
+   TEDDY FIGHT
+========================= */
+
+.teddy-area{
+    height:330px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.teddy{
+    position:absolute;
+    font-size:125px;
+    transition:.4s;
+}
+
+.teddy1{
+    left:35px;
+    animation:fight1 1.2s infinite alternate;
+}
+
+.teddy2{
+    right:35px;
+    animation:fight2 1.2s infinite alternate;
+}
+
+@keyframes fight1{
+    0%{
+        transform:rotate(-8deg) translateX(0);
+    }
+    100%{
+        transform:rotate(10deg) translateX(25px);
+    }
+}
+
+@keyframes fight2{
+    0%{
+        transform:rotate(8deg) translateX(0);
+    }
+    100%{
+        transform:rotate(-10deg) translateX(-25px);
+    }
+}
+
+.angry{
+    position:absolute;
+    font-size:30px;
+    animation:angry 1s infinite alternate;
+}
+
+.angry1{
+    left:130px;
+    top:75px;
+}
+
+.angry2{
+    right:130px;
+    top:75px;
+}
+
+@keyframes angry{
+    from{
+        transform:scale(.8) rotate(-10deg);
+    }
+    to{
+        transform:scale(1.2) rotate(10deg);
+    }
+}
+
+
+/* HEARTS */
+
+.heart{
+    position:absolute;
+    font-size:28px;
+    animation:heartMove 2s infinite;
+}
+
+.h1{
+    left:45%;
+    top:80px;
+}
+
+.h2{
+    left:38%;
+    top:150px;
+    animation-delay:.4s;
+}
+
+.h3{
+    right:40%;
+    top:125px;
+    animation-delay:.8s;
+}
+
+@keyframes heartMove{
+    0%{
+        opacity:0;
+        transform:translateY(30px) scale(.5);
+    }
+    50%{
+        opacity:1;
+        transform:translateY(-20px) scale(1);
+    }
+    100%{
+        opacity:0;
+        transform:translateY(-80px) scale(1.3);
+    }
+}
+
+
+h1{
+    color:#ff3f73;
+    font-size:28px;
+    margin:15px 0;
+}
+
+.subtitle{
+    color:#777;
+    margin-bottom:25px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+    border:none;
+    border-radius:30px;
+    padding:14px 30px;
+    margin:8px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.yes{
+    background:#ff4f81;
+    color:white;
+}
+
+.yes:hover{
+    transform:scale(1.08);
+}
+
+.no{
+    background:#eeeeee;
+    color:#333;
+    position:absolute;
+}
+
+
+/* =========================
+   OPTIONS
+========================= */
+
+.options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:25px;
+}
+
+.option{
+    padding:20px 10px;
+    border:2px solid #eee;
+    border-radius:18px;
+    background:#fff;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.option:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+.option.locked{
+    animation:shake .25s;
+    border-color:#ff7777;
+}
+
+@keyframes shake{
+    0%{transform:translateX(0);}
+    25%{transform:translateX(-7px);}
+    50%{transform:translateX(7px);}
+    75%{transform:translateX(-7px);}
+    100%{transform:translateX(0);}
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final-heart{
+    font-size:90px;
+    animation:beat 1s infinite alternate;
+}
+
+@keyframes beat{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.2);
+    }
+}
+
+.final-text{
+    font-size:18px;
+    color:#555;
+    line-height:1.6;
+    margin:20px 0;
+}
+
+.credit{
+    margin-top:35px;
+    padding-top:20px;
+    border-top:1px solid #eee;
+    color:#777;
+    font-size:13px;
+}
+
+.credit strong{
+    color:#ff3f73;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+<!-- ==================================
+     PAGE 1
+================================== -->
+
+<div class="page active" id="page1">
+
+    <div class="teddy-area">
+
+        <div class="teddy teddy1">🧸</div>
+        <div class="teddy teddy2">🧸</div>
+
+        <div class="angry angry1">💢</div>
+        <div class="angry angry2">💢</div>
+
+        <div class="heart h1">❤️</div>
+        <div class="heart h2">💖</div>
+        <div class="heart h3">💕</div>
+
+    </div>
+
+    <h1>These two are fighting again 😭😂</h1>
+
+    <p class="subtitle">
+        But I have one important question for you...
+    </p>
+
+    <button class="btn yes" onclick="showPage(2)">
+        Continue ❤️
+    </button>
+
+</div>
+
+
+<!-- ==================================
+     PAGE 2
+================================== -->
+
+<div class="page" id="page2">
+
+    <div style="font-size:100px;margin-top:50px;">
+        🧸❤️🧸
+    </div>
+
+    <h1>Will you go on a date with me? 🥺❤️</h1>
+
+    <div style="height:150px;position:relative;">
+
+        <button
+            class="btn yes"
+            onclick="showPage(3)">
+            YES ❤️
+        </button>
+
+        <button
+            class="btn no"
+            id="noButton">
+            NO 😭
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================
+     PAGE 3
+================================== -->
+
+<div class="page" id="page3">
+
+    <div style="font-size:80px;margin-top:30px;">
+        🍕🍔🍟
+    </div>
+
+    <h1>
+        Pehle kya khana hai? 😋
+    </h1>
+
+    <p class="subtitle">
+        Choose wisely 😏
+    </p>
+
+    <div class="options">
+
+        <!-- LOCKED -->
+
+        <button class="option"
+        onclick="locked(this)">
+            🥂 Luxury Restaurant
+        </button>
+
+        <button class="option"
+        onclick="locked(this)">
+            🍽️ Royal Restaurant
+        </button>
+
+        <button class="option"
+        onclick="locked(this)">
+            🥩 Premium Restaurant
+        </button>
+
+        <!-- ONLY WORKING OPTION -->
+
+        <button class="option"
+        onclick="showPage(4)">
+            🌮 Thela 😎
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================
+     PAGE 4
+================================== -->
+
+<div class="page" id="page4">
+
+    <div style="font-size:80px;margin-top:30px;">
+        🎬🍿❤️
+    </div>
+
+    <h1>
+        Kaha jaana hai? 😏
+    </h1>
+
+    <p class="subtitle">
+        Ek option choose karo 👀
+    </p>
+
+    <div class="options">
+
+        <button class="option"
+        onclick="locked(this)">
+            🏖️ Beach
+        </button>
+
+        <button class="option"
+        onclick="locked(this)">
+            🌆 City
+        </button>
+
+        <button class="option"
+        onclick="locked(this)">
+            🌳 Park
+        </button>
+
+        <!-- ONLY WORKING -->
+
+        <button class="option"
+        onclick="showPage(5)">
+            🎬 Movie 🍿
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================
+     PAGE 5
+================================== -->
+
+<div class="page" id="page5">
+
+    <div class="final-heart">
+        ❤️
+    </div>
+
+    <h1>
+        I knew it! 😍
+    </h1>
+
+    <p class="final-text">
+
+        Thela ka khana 🌮<br>
+        Movie 🎬🍿<br>
+        Aur company tumhari ❤️
+
+        <br><br>
+
+        Perfect date plan! 😂❤️
+
+    </p>
+
+    <div class="credit">
+
+        Made with ❤️ by <strong>Chetan</strong>
+
+      
+
+        📱 <strong>i</strong>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+/* =========================
+   PAGE SYSTEM
+========================= */
+
+function showPage(pageNumber){
+
+    document.querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.remove("active");
+        });
+
+    document
+        .getElementById("page" + pageNumber)
+        .classList.add("active");
+}
+
+
+/* =========================
+   NO BUTTON RUNS AWAY
+========================= */
+
+const noButton =
+    document.getElementById("noButton");
+
+
+function moveNo(){
+
+    const parent =
+        noButton.parentElement;
+
+    const maxX =
+        parent.clientWidth - noButton.offsetWidth;
+
+    const maxY =
+        parent.clientHeight - noButton.offsetHeight;
+
+    const x =
+        Math.random() * Math.max(maxX,1);
+
+    const y =
+        Math.random() * Math.max(maxY,1);
+
+    noButton.style.left = x + "px";
+    noButton.style.top = y + "px";
+}
+
+
+/* Desktop */
+
+noButton.addEventListener(
+    "mouseenter",
+    moveNo
+);
+
+
+/* Mobile */
+
+noButton.addEventListener(
+    "touchstart",
+    function(event){
+
+        event.preventDefault();
+
+        moveNo();
+
+    }
+);
+
+
+/* =========================
+   LOCKED OPTIONS
+========================= */
+
+function locked(button){
+
+    button.classList.add("locked");
+
+    button.innerHTML =
+        "❌ Nope 😂";
+
+    setTimeout(function(){
+
+        button.classList.remove("locked");
+
+    },500);
+
+}
+
+</script>
+
+</body>
+</html>
